@@ -38,19 +38,20 @@ class User
      */
     #[ORM\Column(length: 255)]
     private ?string $city = null;
+
     /**
      * @groups("user:read")
-     * @Assert\NotBlank(message="La position du device est obligatoire")
+     * @Assert\NotBlank(message="La lattitude est obligatoire")
      */
-
     #[ORM\Column]
     private ?string $lat = null;
-
+    /**
+     * @groups("user:read")
+     * @Assert\NotBlank(message="La longitude est obligatoire")
+     */
     #[ORM\Column]
     private ?string $lng = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $device = null;
 
     public function getId(): ?int
     {
@@ -117,18 +118,6 @@ class User
     public function setLng(string $lng): self
     {
         $this->lng = $lng;
-
-        return $this;
-    }
-
-    public function getDevice(): ?string
-    {
-        return $this->device;
-    }
-
-    public function setDevice(string $device): self
-    {
-        $this->device = $device;
 
         return $this;
     }
