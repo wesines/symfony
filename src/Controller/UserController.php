@@ -37,7 +37,10 @@ class UserController extends AbstractController
     {
         try {
             $jsonrecup = $request->getContent();
+            //dd($jsonrecup);
             $user = $serializer->deserialize($jsonrecup, User::class, "json");
+            //dd($user);
+
             $errors = $validator->validate($user);
             if (count($errors) > 0) {
                 return $this->json($errors, 400);
